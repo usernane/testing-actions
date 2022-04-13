@@ -49,6 +49,9 @@ class Index {
 
         if (CLI::isCLI() === true) {
             CLI::registerCommands();
+            if (defined('PHPUNIT_COMPOSER_INSTALL') || defined('__PHPUNIT_PHAR__')) {
+                return;
+            }
             CLI::runCLI();
         } else {
             //route user request.
