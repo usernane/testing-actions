@@ -13,7 +13,7 @@
     </logging>
     <testsuites>
         <testsuite name="Database Tests">
-            <directory>./tests/database</directory>
+            <directory>./tests</directory>
         </testsuite>
     </testsuites>
 </phpunit>
