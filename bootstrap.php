@@ -59,12 +59,14 @@ if ($isAutoloaderLoaded === false) {
     fprintf(STDOUT,"Class 'AutoLoader' successfully loaded.\n");
 }
 fprintf(STDOUT,"Initializing autoload directories...\n");
+//Create APP_DIR
+require_once './public/index.php';
 AutoLoader::get([
     'search-folders' => [
         'tests',
         'webfiori',
         'vendor',
-        'app'
+        APP_DIR_NAME
     ],
     'define-root' => true,
     'root' => __DIR__,
