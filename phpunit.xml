@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit stderr="true" colors="true" bootstrap="bootstrap.php">
+    <php>
+    </php>
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <!-- Add Files to include in coverage report -->
+            <!-- <file>./webfiori/framework/cron/CronJob.php</file> -->
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-clover" target="clover.xml"/>
+    </logging>
+    <testsuites>
+        <testsuite name="Database Tests">
+            <directory>./tests/database</directory>
+        </testsuite>
+</phpunit>
