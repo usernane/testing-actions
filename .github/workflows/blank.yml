@@ -61,6 +61,14 @@ jobs:
       - name: LS
         run: ls /etc/mysql
         
+      - name: Read file
+        uses: juliangruber/read-file-action@v1.1.4
+        with:
+            # File path
+          path: /etc/mysql/my.cnf
+      - name: Echo
+        run: echo "${{ steps.package.outputs.content }}"
+    
       - name: Execute Tests
         run: phpunit -v
       
