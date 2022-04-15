@@ -59,7 +59,7 @@ jobs:
         run: mkdir -m777 -p /home/runner/work/framework/framework/app/sto/sessions
         
       - name: LS
-        run: ls
+        run: ls /etc
         
       - name: Execute Tests
         run: phpunit -v
