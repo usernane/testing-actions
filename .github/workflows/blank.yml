@@ -62,7 +62,7 @@ jobs:
         run: ls /etc/mysql
         
       - name: Show MySQL Config
-        run: mysql -e "show variables"
+        run: mysql -uroot -proot -e "show variables"
     
       - name: Execute Tests
         run: phpunit -v
