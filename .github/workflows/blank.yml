@@ -65,7 +65,10 @@ jobs:
         run: ls /etc
         
       - name: LS MySQL
-        run: ls /etc/mysql
+        run: |
+          ls /etc/mysql
+          ls /etc/mysql/conf.d
+          ls /etc/mysql/mysql.conf.d
         
       - name: CAT
         run: cat /etc/mysql/my.cnf
