@@ -59,7 +59,7 @@ jobs:
         run: mkdir -m777 -p /home/runner/work/framework/framework/app/sto/sessions
         
       - name: LS
-        run: ls /etc/mysql
+        run: ls /etc/mysql/conf.d
       
       - name: Change MySQL Auth Method
         run: |
