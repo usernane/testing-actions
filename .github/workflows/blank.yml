@@ -65,7 +65,7 @@ jobs:
         run: |
           mysql -uroot -proot -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'root';"
       - name: VIM
-        run: vim /etc/mysql/conf.d
+        run: vim
         
       - name: Show MySQL Config
         run: mysql -uroot -proot -e "show variables"
