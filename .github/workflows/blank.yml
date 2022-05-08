@@ -41,17 +41,15 @@ jobs:
           sudo chmod 777  /var/log/mysql/error.log
           echo -e '[mysqld]\nbind-address=127.0.0.1\ndefault-authentication-plugin=mysql_native_password' > "$HOME/.my.cnf"
           echo "Created $HOME/.my.cnf"
+          echo "Run MySQLd"
+          mysqld --verbose --default-authentication-plugin=mysql_native_password
           sudo systemctl start mysql.service
-          
-          
           echo "Waiting to start MySQL"
           while ! mysqladmin ping --host=127.0.0.1 --password=123456 --silent; do
             sleep 1
           done
           echo "Changing auth method of root"
           mysql -uroot -proot -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'root';"
-          echo "Run MySQLd"
-          mysqld --verbose --default-authentication-plugin=mysql_native_password
           echo "Stopping MySQL"
           sudo systemctl stop mysql.service
           echo "Starting MySQL"
