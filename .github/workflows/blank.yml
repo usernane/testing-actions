@@ -67,18 +67,22 @@ jobs:
       - name: LS MySQL 1
         run: |
           ls /etc/mysql
-      
+      - name: CAT 1
+        run: cat /etc/mysql/my.cnf
+        
       - name: LS MySQL 2
         run: |
           ls /etc/mysql/conf.d
-          
+      - name: CAT 2
+        run: cat /etc/mysql/conf.d/mysql.cnf
+        
       - name: LS MySQL 3
         run: |
           ls /etc/mysql/mysql.conf.d
         
-      - name: CAT
-        run: cat /etc/mysql/my.cnf
-      
+      - name: CAT 3
+        run: cat /etc/mysql/mysql.conf.d/mysql.cnf
+        
       - name: Change MySQL Auth Method
         run: |
           mysql -uroot -proot -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'root';"
