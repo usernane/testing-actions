@@ -58,35 +58,17 @@ jobs:
       - name: Create DIR
         run: mkdir -m777 -p /home/runner/work/framework/framework/app/sto/sessions
         
-      - name: MySQLD
-        run: mysqld --help --verbose
-        
-      - name: LS ETC
-        run: ls /etc
-        
-      - name: LS MySQL 1
-        run: |
-          ls /etc/mysql
-      - name: CAT 1
-        run: cat ~/.my.cnf
-        
-      - name: LS MySQL 2
-        run: |
-          ls /etc/mysql/conf.d
-      - name: CAT 2
-        run: cat /etc/mysql/conf.d/mysql.cnf
-        
-      - name: LS MySQL 3
-        run: |
-          ls /etc/mysql/mysql.conf.d
-        
-      - name: CAT 3
-        run: cat /etc/mysql/mysql.conf.d/mysql.cnf
-        
       - name: Change MySQL Auth Method
         run: |
           mysql -uroot -proot -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'root';"
       
+      - name: Re-Start MySQL
+        run: |
+          sudo systemctl stop mysql.service
+          sudo systemctl start mysql.service
+          while ! mysqladmin ping --host=127.0.0.1 --password=123456 --silent; do
+            sleep 1
+          done
         
       - name: Show MySQL Config
         run: mysql -uroot -proot -e "show variables"
