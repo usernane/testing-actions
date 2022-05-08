@@ -42,7 +42,7 @@ jobs:
           echo -e '[mysqld]\nbind-address=127.0.0.1\ndefault-authentication-plugin=mysql_native_password' > "$HOME/.my.cnf"
           echo "Created $HOME/.my.cnf"
           echo "Run MySQLd"
-          mysqld --verbose --default-authentication-plugin=mysql_native_password
+          mysqld --verbose --help
           sudo systemctl start mysql.service
           echo "Waiting to start MySQL"
           while ! mysqladmin ping --host=127.0.0.1 --password=123456 --silent; do
