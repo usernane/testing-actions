@@ -64,10 +64,16 @@ jobs:
       - name: LS ETC
         run: ls /etc
         
-      - name: LS MySQL
+      - name: LS MySQL 1
         run: |
           ls /etc/mysql
+      
+      - name: LS MySQL 2
+        run: |
           ls /etc/mysql/conf.d
+          
+      - name: LS MySQL 3
+        run: |
           ls /etc/mysql/mysql.conf.d
         
       - name: CAT
