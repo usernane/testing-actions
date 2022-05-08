@@ -66,6 +66,9 @@ jobs:
         
       - name: LS MySQL
         run: ls /etc/mysql
+        
+      - name: CAT
+        run: cat /etc/mysql/my.cnf
       
       - name: Change MySQL Auth Method
         run: |
