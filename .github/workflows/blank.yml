@@ -58,14 +58,19 @@ jobs:
       - name: Create DIR
         run: mkdir -m777 -p /home/runner/work/framework/framework/app/sto/sessions
         
-      - name: LS
-        run: ls /etc/mysql/conf.d
+      - name: MySQLD
+        run: mysqld --help --verbose
+        
+      - name: LS ETC
+        run: ls /etc
+        
+      - name: LS MySQL
+        run: ls /etc/mysql
       
       - name: Change MySQL Auth Method
         run: |
           mysql -uroot -proot -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'root';"
-      - name: MySQLD
-        run: mysqld --help --verbose
+      
         
       - name: Show MySQL Config
         run: mysql -uroot -proot -e "show variables"
