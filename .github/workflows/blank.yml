@@ -38,7 +38,7 @@ jobs:
       - name: Start MySQL
         run: |
           sudo chmod 777  /var/lib/mysql
-          sudo chmod 777  /var/log/mysql
+          sudo chmod 777  /var/log/mysql/error.log
           echo -e '[mysqld]\nbind-address=127.0.0.1\ndefault-authentication-plugin=mysql_native_password' > "$HOME/.my.cnf"
           echo "Created $HOME/.my.cnf"
           sudo systemctl start mysql.service
