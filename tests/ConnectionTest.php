@@ -14,7 +14,7 @@ class ConnectionTest extends TestCase{
      * @test
      */
     public function test00() {
-        $connection = new ConnectionInfo('mysql', 'test_user', 123456, 'testing_db', 'localhost', 3306, [
+        $connection = new ConnectionInfo('mysql', 'testing_user', 123456, 'testing_db', 'localhost', 3306, [
             'connection-name' => 'test-connection'
         ]);
         WebFioriApp::getAppConfig()->addDbConnection($connection);
