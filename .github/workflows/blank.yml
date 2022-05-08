@@ -60,6 +60,9 @@ jobs:
         
       - name: LS
         run: ls /etc/mysql
+      
+      - name: Change MySQL Auth Method
+        run: mysql -uroot -proot -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'root';"
         
       - name: Show MySQL Config
         run: mysql -uroot -proot -e "show variables"
