@@ -34,17 +34,21 @@ jobs:
       
       - name: Clone Repo
         uses: actions/checkout@v1
-      - name: Create MySQL Config
-        run: |
-          echo -e '[mysqld]\ndefault-authentication-plugin=mysql_native_password\n!include etc/mysql/my.cnf' > "$HOME/.my.cnf"
-          
+        
       - name: Start MySQL
         run: |
+          echo -e '[mysqld]\ndefault-authentication-plugin=mysql_native_password' > "$HOME/.my.cnf"
           sudo systemctl start mysql.service
           while ! mysqladmin ping --host=127.0.0.1 --password=123456 --silent; do
             sleep 1
           done
-      
+          mysql -uroot -proot -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'root';"
+          sudo systemctl stop mysql.service
+          sudo systemctl start mysql.service
+          while ! mysqladmin ping --host=127.0.0.1 --password=123456 --silent; do
+            sleep 1
+          done
+          
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -60,18 +64,8 @@ jobs:
         
       - name: Create DIR
         run: mkdir -m777 -p /home/runner/work/framework/framework/app/sto/sessions
-        
-      - name: Change MySQL Auth Method
-        run: |
-          mysql -uroot -proot -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'root';"
+          
       
-      - name: Re-Start MySQL
-        run: |
-          sudo systemctl stop mysql.service
-          sudo systemctl start mysql.service
-          while ! mysqladmin ping --host=127.0.0.1 --password=123456 --silent; do
-            sleep 1
-          done
         
       - name: Show MySQL Config
         run: mysql -uroot -proot -e "show variables"
