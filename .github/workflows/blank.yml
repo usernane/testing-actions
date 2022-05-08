@@ -68,7 +68,7 @@ jobs:
         run: |
           ls /etc/mysql
       - name: CAT 1
-        run: cat /etc/mysql/my.cnf
+        run: cat ~/.my.cnf
         
       - name: LS MySQL 2
         run: |
