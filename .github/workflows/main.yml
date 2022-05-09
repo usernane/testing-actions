@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: usernane/hello-world-docker-action@v1.1
+        uses: usernane/hello-world-docker-action@22afb0a3d71d7d027a61f38ec86f3381325185a4
         with:
           who-to-greet: 'Ibrahim'
       # Use the output from the `hello` step
