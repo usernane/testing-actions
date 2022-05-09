@@ -27,6 +27,8 @@ jobs:
       
       - name: Start MySQL
         run: |
+          sudo chmod -R u+rwx /etc/mysql/
+          sudo chown -R mysql.mysql /etc/mysql/
           echo "Start MySQL"
           sudo systemctl start mysql.service
           echo "Waiting to start MySQL"
