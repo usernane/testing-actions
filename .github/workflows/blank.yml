@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     runs-on: ${{ matrix.os }} 
-    services: 
+#    services: 
 #      mysql-db:
 #        image: mysql:8.0
 #        env:
