@@ -27,10 +27,8 @@ jobs:
       
       - name: Start MySQL
         run: |
-          sudo chmod -R u+rwx /etc/mysql/
-          sudo chown -R mysql.mysql /etc/mysql/
-          sudo chmod a+rwx mysql /location
-          sudo chown mysql.mysql /location
+          sudo chmod a+rwx mysql /etc/mysql/
+          sudo chown mysql.mysql /etc/mysql/
           echo "Start MySQL"
           sudo systemctl start mysql.service
           echo "Waiting to start MySQL"
