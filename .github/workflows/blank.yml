@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v1
         
       - name: Start containers
-        run: docker-compose -f "docker-compose.yml" up -d tail -f /dev/null --build 
+        run: docker-compose -f "docker-compose.yml" up -d -t --build 
         
       - name: Check running containers
         run: docker ps -a
