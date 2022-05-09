@@ -43,6 +43,7 @@ jobs:
           echo "Created $HOME/.my.cnf"
           echo "Run MySQLd"
           mysqld --default-authentication-plugin=mysql_native_password
+          echo "Start MySQL"
           sudo systemctl start mysql.service
           echo "Waiting to start MySQL"
           while ! mysqladmin ping --host=127.0.0.1 --password=123456 --silent; do
