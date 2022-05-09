@@ -9,19 +9,6 @@ on:
 jobs:
   test:
     runs-on: ${{ matrix.os }} 
-#    services: 
-#      mysql-db:
-#        image: mysql:8.0
-#        env:
-#          MYSQL_ROOT_PASSWORD: 123456
-#          MYSQL_DATABASE: testing_db
-#        ports:
-#          - 3306:3306
-#        options: >-
-#          --health-cmd="mysqladmin ping"
-#          --health-interval=10s
-#          --health-timeout=5s
-#          --health-retries=3
     strategy: 
       fail-fast: true
       matrix: 
@@ -40,31 +27,13 @@ jobs:
       
       - name: Start MySQL
         run: |
-          #sudo chmod 777  /var/lib/mysql
-          #sudo chmod 777  /var/log/mysql/error.log
-          #echo -e '[mysqld]\nbind-address=127.0.0.1\ndefault-authentication-plugin=mysql_native_password' > "$HOME/.my.cnf"
-          #echo "Created $HOME/.my.cnf"
-          #echo "Run MySQLd"
-          #mysqld --default-authentication-plugin=mysql_native_password
           echo "Start MySQL"
           sudo systemctl start mysql.service
           echo "Waiting to start MySQL"
           while ! mysqladmin ping --host=127.0.0.1 --password=123456 --silent; do
             sleep 1
           done
-          #echo "Changing auth method of root"
-          #mysql -uroot -proot -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'root';"
-          #echo "Stopping MySQL"
-          #sudo systemctl stop mysql.service
-          #echo "Starting MySQL"
-          #sudo systemctl start mysql.service
-          #while ! mysqladmin ping --host=127.0.0.1 --password=123456 --silent; do
-          #  sleep 1
-          #done
-          #echo "Creating Testing User Account"
-          #mysql -uroot -proot -e "create USER testing_user@localhost IDENTIFIED WITH mysql_native_password BY '123456';"
-          #mysql -uroot -proot -e "GRANT ALL PRIVILEGES ON *.* TO testing_user@localhost;"
-          #mysql -uroot -proot -e "FLUSH PRIVILEGES;"
+          
           echo "Done"
           mysql -uroot -proot -e "select * from mysql.user;"
           
