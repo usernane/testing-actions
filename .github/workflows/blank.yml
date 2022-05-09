@@ -22,9 +22,11 @@ jobs:
       - name: Clone Repo
         uses: actions/checkout@v1
         
-      #- name: Start containers
-      #  run: docker-compose -f "docker-compose.yml" up -d --build
-      
+      - name: Start containers
+        run: docker-compose -f "docker-compose.yml" up -d --build
+        
+      - name: Check running containers
+        run: docker ps -a
       - name: Start MySQL
         run: |
           echo "Start MySQL"
