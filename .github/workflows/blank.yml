@@ -22,13 +22,11 @@ jobs:
       - name: Clone Repo
         uses: actions/checkout@v1
         
-      - name: Start containers
-        run: docker-compose -f "docker-compose.yml" up -d --build
+      #- name: Start containers
+      #  run: docker-compose -f "docker-compose.yml" up -d --build
       
       - name: Start MySQL
         run: |
-          sudo chmod a+rwx /etc/mysql/
-          sudo chown mysql.mysql /etc/mysql/
           echo "Start MySQL"
           sudo systemctl start mysql.service
           echo "Waiting to start MySQL"
